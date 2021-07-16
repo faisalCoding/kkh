@@ -35,7 +35,9 @@
 
             <!-- Page Content -->
             <main>
+                <hr>
                 {{ $slot }}
+                <hr>
             </main>
         </div>
 

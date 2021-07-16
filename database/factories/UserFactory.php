@@ -32,6 +32,11 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
+    public function uniqemail()
+    {
+        return  $this->faker->unique()->safeEmail();
+
+    }
 
     /**
      * Indicate that the model's email address should be unverified.
