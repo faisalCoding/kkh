@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+
+Route::prefix('{locales?}')->group(function (){
+
+    Route::get('/greeting/{locale}', function ($locale) {
+ 
+    
+        Session::put('applocale', $locale);
+        
+    
+        return redirect()->back();
+    
+        //
+    })->name('config.change.locale');
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    
+    Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    
+
+});

@@ -28,14 +28,14 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
 
                 if($guard === 'sectionManager'){
-                    return redirect()->route('section_manager.dashboard');
+                    return redirect()->route('section_manager.dashboard', );
                 }
     
                 
                 if($guard === 'admin'){
-                    return redirect()->route('admin.dashboard');
+                    return redirect()->route('admin.dashboard', config('app.locale'));
                 }
-                return redirect(RouteServiceProvider::HOME);
+                return redirect(config('app.locale') . RouteServiceProvider::HOME);
             }
         }
 

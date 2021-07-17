@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -23,14 +24,17 @@ class AdminController extends Controller
          $creds = $request->only('email','password');
 
          if( Auth::guard('admin')->attempt($creds) ){
-             return redirect()->route('admin.dashboard');
+             return redirect()->route('admin.dashboard', config('app.locale'));
          }else{
-             return redirect()->route('admin.login')->with('fail','Incorrect credentials');
+             return redirect()->route('admin.login', config('app.locale'))->with('fail','Incorrect credentials');
          }
     }
 
     function logout(){
+        $locale = Session::get('applocale');
         Auth::guard('admin')->logout();
+        Session::start();
+        Session::put('applocale', $locale);
         return redirect('/');
     }
 }

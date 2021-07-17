@@ -17,13 +17,13 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
        
             if($request->routeIs('section_manager.*')){
-                return route('section_manager.login');
+                return route('section_manager.login', config('app.locale'));
             }
             if($request->routeIs('admin.*')){
-                return route('admin.login');
+                return route('admin.login', config('app.locale'));
             }
 
-            return route('login');
+            return route('login', config('app.locale'));
         }
     }
 }

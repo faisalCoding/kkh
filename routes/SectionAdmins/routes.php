@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 use  App\Models\SectionManager;
+
+
+
+Route::prefix('{locales?}')->group(function (){
+
 ## Manager Routes
 Route::prefix('sectionManager')->name('section_manager.')->group(function(){
 
@@ -20,5 +25,7 @@ Route::prefix('sectionManager')->name('section_manager.')->group(function(){
           Route::post('logout',[App\Http\Controllers\SectionManager\SectionManagerController::class,'logout'])->name('logout');
     });
 
+
+});
 
 });

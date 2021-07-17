@@ -11,12 +11,12 @@
                 {{ session('status') }}
             </div>
         @endif
-
-        <form method="POST" action="{{ route('login') }}">
+          
+        <form method="POST" action="{{ route('login', config('app.locale')) }} " dir="{{ config('app.locale') == 'ar' ? 'rtl' : 'ltr';}}">
             @csrf
-
+            
             <div>
-                <h2>{{ config('fortify.username') }}</h2>
+                
                 <x-jet-label for="phone" value="{{ __('phone') }}" />
                 <x-jet-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autofocus />
             </div>
@@ -35,7 +35,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request', config('app.locale')) }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif

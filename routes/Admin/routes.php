@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 
 use  App\Models\Admin;
+
+
+
+Route::prefix('{locales?}')->group(function (){
 ## Manager Routes
 Route::prefix('admin')->name('admin.')->group(function(){
 
@@ -21,4 +25,5 @@ Route::prefix('admin')->name('admin.')->group(function(){
     
 
 
+});
 });
