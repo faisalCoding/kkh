@@ -22,11 +22,11 @@ class AdminController extends Controller
          ]);
 
          $creds = $request->only('email','password');
-
+         
          if( Auth::guard('admin')->attempt($creds) ){
              return redirect()->route('admin.dashboard', config('app.locale'));
          }else{
-             return redirect()->route('admin.login', config('app.locale'))->with('fail','Incorrect credentials');
+             return redirect()->route('admin.login', 'en')->with('fail','Incorrect credentials');
          }
     }
 

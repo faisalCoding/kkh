@@ -12,7 +12,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('admin.check', config('app.locale')) }}">
+        <form method="POST" action="{{ route('admin.check', 'ar') }}">
             @csrf
             {{ config('fortify.username','email'); }}
             <div>

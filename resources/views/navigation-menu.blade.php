@@ -133,15 +133,25 @@
                         </x-slot>
                     </x-jet-dropdown>
                 </div>
+
+                @php
+
+                    $url_without_lang= \Request::segments();
+                    $url_with_lang = array_shift($url_without_lang);
+                    
+
+                @endphp
+               
                 @if (config('app.locale') == 'ar')
-                    <a href="{{ route('config.change.locale', ['locales'=>'en','locale'=>'en']) }}" class=" text-blue-600 mr-5 text-lg">en</a>
+                    <a href="{{ \Request::root() . '/en/' . implode('/', $url_without_lang)}}" class=" text-blue-600 mr-5 text-lg">en</a>
                 @else
-                    <a href="{{ route('config.change.locale', ['locales'=>'ar','locale'=>'ar']) }}" class=" text-blue-600 mr-5 text-lg">ar</a>
+                    <a href="{{ \Request::root() . '/ar/' . implode('/', $url_without_lang)}}" class=" text-blue-600 mr-5 text-lg">ar</a>
                 @endif
             
             </div>
 
             <!-- Hamburger -->
+            
             <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open"
                     class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
