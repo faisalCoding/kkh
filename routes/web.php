@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Session;
 
 
 
-Route::prefix('{locales?}')->group(function (){
+Route::prefix(LaravelLocalization::setLocale())->middleware([ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ])->group(function (){
 
     Route::get('/greeting/{locale}', function ($locale) {
  

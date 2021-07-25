@@ -6,7 +6,7 @@ use  App\Models\Admin;
 
 
 
-Route::prefix('{locales?}')->group(function (){
+Route::prefix(LaravelLocalization::setLocale())->middleware([ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ])->group(function (){
 ## Manager Routes
 Route::prefix('admin')->name('admin.')->group(function(){
 
@@ -21,6 +21,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         
         Route::view('/dashboard','auth.admin.dashboard' , )->name('dashboard');
           Route::post('/logout',[App\Http\Controllers\Admin\AdminController::class,'logout'])->name('logout');
+          Route::get('/profile', [App\Http\Controllers\Admin\AdminController::class, 'show'])
+          ->name('profile.show');
     });
     
 

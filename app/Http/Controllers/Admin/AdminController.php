@@ -37,4 +37,12 @@ class AdminController extends Controller
         Session::put('applocale', $locale);
         return redirect('/');
     }
+
+        public function show(Request $request)
+    {
+        return view('profile.show', [
+            'request' => $request,
+            'user' => $request->user(),
+        ]);
+    }
 }

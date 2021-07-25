@@ -6,7 +6,8 @@ use  App\Models\SectionManager;
 
 
 
-Route::prefix('{locales?}')->group(function (){
+Route::prefix(LaravelLocalization::setLocale())->middleware([ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ])->group(function (){
+
 
 ## Manager Routes
 Route::prefix('sectionManager')->name('section_manager.')->group(function(){

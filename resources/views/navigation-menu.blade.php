@@ -109,7 +109,10 @@
                                 {{ __('Manage Account') }}
                             </div>
 
-                            <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                            @php
+                               $route =  Auth::guard('admin')->check()?'admin.profile.show':'profile.show';
+                            @endphp
+                            <x-jet-dropdown-link href="{{ route($route) }}">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
 

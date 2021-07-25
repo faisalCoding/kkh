@@ -27,7 +27,8 @@ class Language {
         if (in_array($request->segment(1),config('app.locales'))) {
             $this->app->setLocale($request->segment(1));
         }else{
-            return  redirect(config('app.locale') . '/' .  implode('/',$request->segments()));
+            
+
         }
         
        
