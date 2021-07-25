@@ -27,8 +27,9 @@
             <img class=" mb-10 w-48" src="{{ asset('assets/main_logo.png') }}">
 
 
-            <div class="flex bg-main-grd w-full  justify-start items-center">
-                <input type="text" class="w-80 h-12 bg-white border-none ">
+            <div class="flex bg-main-grd w-full  justify-center items-center main-search relative">
+                 <ion-icon name="ios-search" class=" text-gray-400 h-12 bg-white px-3 text-lg text-gray-500"></ion-icon>
+                <input type="text" class="w-80 h-12 bg-white border-none pr-0" placeholder="ابحث عن القسم">
                 <select class="w-28 h-12 border-none  bg-gray-100" dir="ltr">
                     <option value="1">الادارة</option>
                     <option value="12">ابو محمد </option>

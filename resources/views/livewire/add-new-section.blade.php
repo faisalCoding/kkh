@@ -37,15 +37,14 @@
             <h1 class="text-gray-800 text-xl py-3 ">صورة القسم</h1>
 
             <form class="h-96" wire:submit.prevent="saveFile" class="flex flex-col">
-                <input type="file" wire:model="file">
+                <input type="file" wire:model="file" class="custom-file-input">
                 <div wire:loading wire:target="file" class="text-xl text-yellow-500 block">جاري تحميل الصورة</div>
                 @if ($file)
-                    Photo Preview:
-                    <img class="max-h-40" src="{{ $file->temporaryUrl() }}">
-
+                <div class="py-3 text-lg text-gray-700 ">اسم الصورة : {{ $new_section_image_name }}</div>
+                <div class="py-3 text-lg text-gray-700 ">معاينة الصورة</div>
+                
+                <img class="max-h-40" src="{{ $file->temporaryUrl() }}">
                 @endif
-
-                <button type="submit">Save Photo</button>
                 @error('file')
                     <span class=" text-red-500">{{ $message }}</span>
                 @enderror

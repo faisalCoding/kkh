@@ -12,7 +12,7 @@ class Section extends Model
     use HasFactory;
 
     protected $fillable = [
-        'image_name', 'name', 'description', 'manager_id',
+        'image_name', 'name', 'id', 'description', 'manager_id',
     ];
 
 
