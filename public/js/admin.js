@@ -17,5 +17,17 @@ tap.forEach(function (e, i) {
     board[i].classList.replace('hidden', 'block');
   };
 });
+var sectionItems = document.querySelectorAll('.section-items'); // sectionItems.forEach(e => {
+//     e.querySelector('button').onclick = (button) => {
+//         popUpEdit(e);
+//     }
+// });
+
+var popup = document.querySelector('.popup');
+var popup_clouse = document.querySelector('.popup_clouse');
+
+function popUpEdit() {
+  popup.classList.replace('hidden', 'flex');
+}
 /******/ })()
 ;

@@ -15,13 +15,16 @@
                         <div class="tap w-32 h-full flex justify-center items-center text-sm cursor-pointer hover:bg-gray-100 hover:text-gray-800 ease-out  bg-white duration-300" ><h1>ادارة المستخدمين</h1></div>
                     </div>
                 
-                    <div class="contetn-board h-full relative bg-gray-800">
-                        <div class="board  block absolute w-full min-h-full border-t border-gray-300 bg-white">
+                    <div class="contetn-board h-full relative bg-white">
+                        <div class="board  block w-full min-h-full border-t border-gray-300 bg-white">
                             @livewire('add-new-section')
                             @livewire('edit-sections')
                         </div>
-                        <div class="board hidden absolute w-full min-h-full border-t border-gray-300  bg-white"></div>
-                        <div class="board hidden absolute  w-full min-h-full border-t border-gray-300 bg-white"></div>
+                        <div class="board hidden w-full min-h-full border-t border-gray-300  bg-white">
+                            @livewire('add-sections-managers')
+                            @livewire('edit-sections-managers')
+                        </div>
+                        <div class="board hidden  w-full min-h-full border-t border-gray-300 bg-white"></div>
                     </div>
                 
                 </div>

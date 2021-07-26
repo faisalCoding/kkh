@@ -13,11 +13,8 @@ class SectionManager extends Authenticatable
     use HasFactory;
     use Notifiable;
 
+    protected $appends =['section_id', 'section_name'];
 
-    public function Section()
-    {
-        $this->belongsTo(Section::class,'manager_id');
-    }
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +22,7 @@ class SectionManager extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name','id', 'email', 'password','section'
     ];
 
     /**
@@ -36,4 +33,28 @@ class SectionManager extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function getSectionIdAttribute($val)
+    {
+        
+        if (isset(  $this->section()->get()->toArray()[0]['id'])) {
+            return  $this->section()->get()->toArray()[0]['id'];
+        }
+        return 0;
+    }
+
+    public function getSectionNameAttribute($val)
+    {
+        
+        if (isset(  $this->section()->get()->toArray()[0]['name'])) {
+            return  $this->section()->get()->toArray()[0]['name'];
+        }
+        return "لم ينسب لقسم";
+        
+    }
+    public function section()
+    {
+        return $this->belongsTo(Section::class,'id','manager_id');
+    }
 }
