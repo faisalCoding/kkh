@@ -46,7 +46,7 @@
         <div class="py-2">
             <button
                 class="rounded-md w-52 h-14 text-white font-bold flex justify-center items-center bg-main-grd-button"
-                wire:click="addNewSection">اضف</button>
+                wire:click="addNewSectionManager">اضف</button>
         </div>
 
     </div>

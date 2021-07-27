@@ -33,7 +33,7 @@
             class="popup fixed w-screen h-screen {{ $popup ? 'flex' : 'hidden' }} top-0 left-0 backdrop-blur-sm bg-gray-900 bg-opacity-20 items-center">
             <div class="popup_clouse fixed w-screen h-screen  top-0 left-0 z-0" onclick="@this.popup_false()"></div>
 
-            <div class="w-7/12 flex flex-col mx-auto bg-white rounded-md z-10">
+            <div class="w-5/12 flex flex-col mx-auto bg-white rounded-md z-10">
                 <div class="flex gap-3 ">
                     <div class="w-1/2 p-5">
 

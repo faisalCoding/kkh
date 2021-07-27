@@ -17,7 +17,7 @@ class CreateSectionsTable extends Migration
             $table->id();
             $table->string('image_name')->default('');
             $table->string('name');
-            $table->unsignedInteger('manager_id');
+            $table->unsignedInteger('manager_id')->default(0);
             $table->string('description')->default('bg_img.png');
             $table->timestamps();
         });
