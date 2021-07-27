@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-2  w-10/12 mx-auto">
 
-    <h1 class=" text-gray-800 text-xl font-bold py-3 my-6 px-4 bg-gray-100 rounded-md">الاقسام المسجلة</h1>
+    <h1 class=" text-gray-800 text-xl font-bold py-3 my-6 px-4 bg-gray-100 rounded-md">{{__("Registered sections")}}</h1>
     <div class="">
 
         @foreach ($sectionsManagers as $sectionManager)
@@ -37,7 +37,7 @@
                 <div class="flex gap-3 ">
                     <div class="w-1/2 p-5">
 
-                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4 ">اسم مدير القسم
+                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4 ">{{__("Manager Name")}}
                         </h1>
                         <input wire:model="edit_section_manager_name" type="text" value="{{ $edit_section_manager_name }}"
                             class="edit_section_manager_name bg-gray-100 rounded-md h-14 border-none w-72">
@@ -47,7 +47,7 @@
                             class="edit_section_manager_email bg-gray-100 rounded-md h-14 border-none w-72">
 
 
-                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4">البريد الاكتروني
+                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4">{{__("Email")}}
                         </h1>
                         <input wire:model="edit_section_manager_email" type="text"
                             class="edit_section_manager_email bg-gray-100 rounded-md border-none w-72" value ="{{ $edit_section_manager_email }}">
@@ -55,7 +55,7 @@
                     </div>
                     <div class="w-1/2 p-5">
                         <div class="">
-                            <h1 class="text-gray-800 text-xl py-3 ">قسم المدير</h1>
+                            <h1 class="text-gray-800 text-xl py-3 ">{{__("Director's Department")}}</h1>
                 
                             <select wire:model="edit_section_manager_section">
                                 @foreach (App\Models\Section::get() as $section)
@@ -68,9 +68,9 @@
                         </div>
                         <hr class="mt-3 mb-8">
 
-                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4">كلمة المرور
+                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4">{{__("Password")}}
                         </h1>
-                        <input type="checkbox" wire:model="change_pass" class="m-3"><span>هل ترغب في  تعديل كلمة المرور؟</span><br>
+                        <input type="checkbox" wire:model="change_pass" class="m-3"><span>{{__("Do you want to Edit the password?")}}</span><br>
                         <input {{ $change_pass?'':'disabled' }} wire:model="edit_section_manager_password" type="text"
                             class="edit_section_manager_email {{ $change_pass?'bg-gray-100':'bg-gray-300' }}  rounded-md border-none w-72" >
                         <hr class="mt-3 mb-8">
@@ -81,8 +81,8 @@
                 </div>
                 <div class="flex w-full p-5 justify-between bg-gray-200 rounded-b-md">
                     <button class="h-14 px-10 bg-main-grd-button col-span-2 rounded-lg text-white text-xl" wire:click="
-                        update()">تحديث</button>
-                    <button class="w-24 h-14 text-red-500  rounded-xl bg-red-50" wire:click="delete()">حذف</button>
+                        update()">{{__("Update")}}</button>
+                    <button class="w-24 h-14 text-red-500  rounded-xl bg-red-50" wire:click="delete()">{{__("Delete")}}</button>
                 </div>
             </div>
         </div>
