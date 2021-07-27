@@ -10,9 +10,9 @@
             <div class="bg-white shadow-xl sm:rounded-lg">
                 <div class="w-full bg-gray-400 flex flex-col">
                     <div class="up-bar w-full bg-main-grd-button flex h-24 ">
-                        <div class="tap w-32 h-full flex justify-center items-center text-sm cursor-pointer hover:bg-gray-100 hover:text-gray-800 ease-out  bg-gray-100 duration-300"><h1>ادارة الاقسام</h1></div>
-                        <div class="tap w-32 h-full flex justify-center items-center text-sm cursor-pointer hover:bg-gray-100 hover:text-gray-800 ease-out  bg-white duration-300"><h1>ادارة مدراء الاقسام</h1></div>
-                        <div class="tap w-32 h-full flex justify-center items-center text-sm cursor-pointer hover:bg-gray-100 hover:text-gray-800 ease-out  bg-white duration-300" ><h1>ادارة المستخدمين</h1></div>
+                        <div class="tap w-32 h-full flex justify-center items-center text-sm cursor-pointer hover:bg-gray-100 hover:text-gray-800 ease-out  bg-gray-100 duration-300"><h1>__("Department management")</h1></div>
+                        <div class="tap w-32 h-full flex justify-center items-center text-sm cursor-pointer hover:bg-gray-100 hover:text-gray-800 ease-out  bg-white duration-300"><h1>__("Department managers management")</h1></div>
+                        <div class="tap w-32 h-full flex justify-center items-center text-sm cursor-pointer hover:bg-gray-100 hover:text-gray-800 ease-out  bg-white duration-300" ><h1>__("User management")</h1></div>
                     </div>
                 
                     <div class="contetn-board h-full relative bg-gray-800">
