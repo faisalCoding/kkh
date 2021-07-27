@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-2  w-10/12 mx-auto">
     
-    <h1 class=" text-gray-800 text-xl font-bold py-3 my-6 px-4 bg-gray-100 rounded-md">الاقسام المسجلة</h1>
+    <h1 class=" text-gray-800 text-xl font-bold py-3 my-6 px-4 bg-gray-100 rounded-md">{{__("Registered sections")}}</h1>
     <div class="">
 
         @foreach ($sections as $section)
@@ -23,7 +23,7 @@
                     class="w-24 object-cover h-24" src="{{ asset('/sections_images/' . $section->image_name) }}"
                     alt="">
                 <button class="w-6 h-14 flex justify-center items-center text-blue-600 "
-                    onclick="@this.initToUpdate(['{{ $sectionArrayWithoutDoubelCotision['id']}}','{{ $sectionArrayWithoutDoubelCotision['name']}}',`{{ $sectionArrayWithoutDoubelCotision['description']}}`,'{{ $sectionArrayWithoutDoubelCotision['manager_id']}}','{{ $sectionArrayWithoutDoubelCotision['image_name']}}'])">تعديل</button>
+                    onclick="@this.initToUpdate(['{{ $sectionArrayWithoutDoubelCotision['id']}}','{{ $sectionArrayWithoutDoubelCotision['name']}}',`{{ $sectionArrayWithoutDoubelCotision['description']}}`,'{{ $sectionArrayWithoutDoubelCotision['manager_id']}}','{{ $sectionArrayWithoutDoubelCotision['image_name']}}'])">{{__("Edit")}}</button>
 
             </div>
         @endforeach
@@ -37,7 +37,7 @@
                 <div class="flex gap-3 ">
                     <div class="w-1/2 p-5">
 
-                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4 ">اسم القسم
+                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4 ">{{__("Department Name")}}
                         </h1>
                         <input wire:model="section_name" type="text" value="{{ $section_name }}"
                             class="section_name bg-gray-100 rounded-md h-14 border-none w-72">
@@ -47,7 +47,7 @@
                             class="section_id bg-gray-100 rounded-md h-14 border-none w-72">
 
 
-                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4">وصف القسم
+                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4">{{__("Section description")}}
                         </h1>
                         <textarea wire:model="section_description" type="text"
                             class="section_description bg-gray-100 rounded-md border-none w-72">{{ $section_description }}</textarea>
@@ -56,14 +56,14 @@
 
                     <div class="w-1/2 p-5">
 
-                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4">مدير القسم
+                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4">{{__("Section Manager")}}
                         </h1>
                         <input wire:model="section_manager_id" type="text" value="{{ $section_manager_id }}"
                             class="section_manager_id bg-gray-100 rounded-md h-14 border-none w-72">
                         <hr class="mt-3 mb-8">
 
 
-                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4">صورة القسم
+                        <h1 class=" text-gray-700 text-xl font-bold py-3 px-4">{{__("Section picture")}}
                         </h1>
                         <img class="w-24 object-cover h-24"
                             src="{{ asset('/sections_images/' . $section_image_name) }}" alt="">
@@ -74,9 +74,9 @@
                 </div>
                 <div class="flex w-full p-5 justify-between bg-gray-200 rounded-b-md">
                     <button class="h-14 px-10 bg-main-grd-button col-span-2 rounded-lg text-white text-2xl" wire:click="
-                        update()">تحديث</button>
+                        update()">{{__("Update")}}</button>
                     <button class="w-24 h-14 text-red-500  rounded-xl bg-red-50"
-                        wire:click="delete()">حذف</button>
+                        wire:click="delete()">{{__("Delete")}}</button>
                 </div>
             </div>
         </div>
