@@ -22,9 +22,9 @@ class AddSectionsManagers extends Component
         'new_section_manager_password' => 'max:50|min:8',
     ];
     public  $messages = [
-        'new_sections_managers_name.max' => 'يجب الا يزيد الاسم عن 15 حرفا',
-        'new_sections_managers_name.required' => 'الاسم مطلوب',
-        'new_sections_managers_name.min' => 'يجب الا يقل الاسم عن 3 احرف',
+        'new_sections_managers_name.max' => '__("The name should not be more than 15 characters")',
+        'new_sections_managers_name.required' => '__("Name is required")',
+        'new_sections_managers_name.min' => '__("The name should not be less than 3 characters")',
     ];
 
     
