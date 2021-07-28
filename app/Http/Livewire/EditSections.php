@@ -16,12 +16,23 @@ class EditSections extends Component
     public $popup = false;
 
     protected $listeners = [
-
+        'new_section_created' => '$refresh'
 
 
     ];
 
+    public $rules = [
+        'section_name' =>'required|string|min:2|max:25',
+        'section_description' =>'max:700|string',
 
+    ];
+
+    public  $messages = [
+        'section_name.max' => 'يجب الا يزيد الاسم عن 25 حرفا',
+         'section_name.min' => 'يجب الا يقل الاسم عن 2 من الاحرف',
+        'section_name.required' => 'الاسم مطلوب',
+        'section_description.max' => 'يجب الا يزيد الوصف عن 700 حرف',
+    ];
 
 
     public function render()
@@ -31,7 +42,7 @@ class EditSections extends Component
         return view(
             'livewire.edit-sections',
             [
-                'sections' => Section::paginate(2)
+                'sections' => Section::latest()->get()
             ]
         );
     }
@@ -73,6 +84,12 @@ class EditSections extends Component
         );
 
         $this->popup = false;
+
+    }
+
+    public function updated()
+    {
+        $this->validate();
 
     }
 }

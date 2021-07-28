@@ -27,7 +27,7 @@
 
             </div>
         @endforeach
-        <div class="" dir="ltr">{{ $sections->links() }}</div>
+        
 
         <div
             class="popup fixed w-screen h-screen {{  $popup?'flex':'hidden'  }} top-0 left-0 backdrop-blur-sm bg-gray-900 bg-opacity-20 items-center">
@@ -39,18 +39,25 @@
 
                         <h1 class=" text-gray-700 text-xl font-bold py-3 px-4 ">اسم القسم
                         </h1>
-                        <input wire:model="section_name" type="text" value="{{ $section_name }}"
+                        <input wire:model="section_name" type="text"
                             class="section_name bg-gray-100 rounded-md h-14 border-none w-72">
+                             @error('section_name')
+                <span class=" text-red-500">{{ $message }}</span>
+            @enderror
                         <hr class="mt-3 mb-8">
 
-                        <input wire:model="section_id" type="text" hidden value="{{ $section_id }}"
+                        <input wire:model="section_id" type="text" hidden 
                             class="section_id bg-gray-100 rounded-md h-14 border-none w-72">
+
 
 
                         <h1 class=" text-gray-700 text-xl font-bold py-3 px-4">وصف القسم
                         </h1>
                         <textarea wire:model="section_description" type="text"
                             class="section_description bg-gray-100 rounded-md border-none w-72">{{ $section_description }}</textarea>
+                            @error('section_description')
+                            <span class=" text-red-500">{{ $message }}</span>
+                        @enderror
                         <hr class="mt-3 mb-8">
                     </div>
 
@@ -58,8 +65,12 @@
 
                         <h1 class=" text-gray-700 text-xl font-bold py-3 px-4">مدير القسم
                         </h1>
-                        <input wire:model="section_manager_id" type="text" value="{{ $section_manager_id }}"
-                            class="section_manager_id bg-gray-100 rounded-md h-14 border-none w-72">
+
+                            <select wire:model="section_manager_id">
+                                @foreach (App\Models\SectionManager::get() as $sectionManager)
+                                    <option value="{{ $sectionManager->id }}">{{ $sectionManager->name }}</option>
+                                @endforeach
+                            </select>
                         <hr class="mt-3 mb-8">
 
 

@@ -51,7 +51,7 @@ class AddNewSection extends Component
                 'description' => $this->new_section_description,
                 'manager_id' => $this->new_scetion_manager
             ]);
-            
+            $this->emit('new_section_created');
         }
     }
     public function updated()

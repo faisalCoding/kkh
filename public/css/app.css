@@ -981,9 +981,6 @@ select{
 .col-span-2{
 	grid-column: span 2 / span 2;
 }
-.m-10{
-	margin: 2.5rem;
-}
 .m-3{
 	margin: 0.75rem;
 }
@@ -1133,6 +1130,12 @@ select{
 .h-full{
 	height: 100%;
 }
+.h-32{
+	height: 8rem;
+}
+.h-1{
+	height: 0.25rem;
+}
 .h-screen{
 	height: 100vh;
 }
@@ -1205,20 +1208,20 @@ select{
 .w-8\/12{
 	width: 66.666667%;
 }
+.w-72{
+	width: 18rem;
+}
 .w-1\/4{
 	width: 25%;
 }
 .w-screen{
 	width: 100vw;
 }
-.w-7\/12{
-	width: 58.333333%;
+.w-5\/12{
+	width: 41.666667%;
 }
 .w-1\/2{
 	width: 50%;
-}
-.w-72{
-	width: 18rem;
 }
 .w-24{
 	width: 6rem;
@@ -1226,8 +1229,8 @@ select{
 .w-2\/12{
 	width: 16.666667%;
 }
-.w-5\/12{
-	width: 41.666667%;
+.w-7\/12{
+	width: 58.333333%;
 }
 .min-w-0{
 	min-width: 0px;
@@ -1372,6 +1375,9 @@ select{
 .rounded-full{
 	border-radius: 9999px;
 }
+.rounded-2xl{
+	border-radius: 1rem;
+}
 .rounded-xl{
 	border-radius: 0.75rem;
 }
@@ -1498,13 +1504,13 @@ select{
 	--tw-bg-opacity: 1;
 	background-color: rgba(17, 24, 39, var(--tw-bg-opacity));
 }
-.bg-red-50{
-	--tw-bg-opacity: 1;
-	background-color: rgba(254, 242, 242, var(--tw-bg-opacity));
-}
 .bg-gray-300{
 	--tw-bg-opacity: 1;
 	background-color: rgba(209, 213, 219, var(--tw-bg-opacity));
+}
+.bg-red-50{
+	--tw-bg-opacity: 1;
+	background-color: rgba(254, 242, 242, var(--tw-bg-opacity));
 }
 .bg-opacity-25{
 	--tw-bg-opacity: 0.25;
@@ -1521,6 +1527,9 @@ select{
 }
 .p-6{
 	padding: 1.5rem;
+}
+.p-4{
+	padding: 1rem;
 }
 .p-5{
 	padding: 1.25rem;
@@ -1788,8 +1797,8 @@ select{
 .opacity-50{
 	opacity: 0.5;
 }
-.opacity-20{
-	opacity: 0.2;
+.opacity-80{
+	opacity: 0.8;
 }
 .shadow-sm{
 	--tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -1875,9 +1884,7 @@ select{
     height: 595px;
     background-image: linear-gradient(317deg, rgba(255, 255, 255, 1) 0%, rgba(185, 185, 185, 1) 100%);
 }
-.up-img-bg-card {
-    border-radius: 0 0 50px 50px;
-}
+.up-img-bg-card {}
 .nav {
     background-image: linear-gradient(269.54deg, #2D9E6C -1.3%, #4E4794 99.45%);
 }
@@ -1886,6 +1893,16 @@ select{
 }
 .bg-main-grd-button {
     background-image: linear-gradient(269.54deg, #236b74 -1.3%, #2f3c61 99.45%);
+}
+.bg-main-dark-button {
+    background: #143554;
+}
+.bg-section-card-content {
+    background-color: #27547D;
+}
+.grt-line {
+    background: linear-gradient(270deg, #7BFFF7 0%, #88FFF1 51.2%, #7BB0FF 101.13%);
+    height: 1.5px;
 }
 .blue-stckr {
     background-image: linear-gradient(269.54deg, #00000031 -1.3%, #00000015 99.45%);

@@ -28,7 +28,7 @@
 
 
             <div class="flex bg-main-grd w-full  justify-center items-center main-search relative">
-                 <ion-icon name="ios-search" class=" text-gray-400 h-12 bg-white px-3 text-lg text-gray-500"></ion-icon>
+                <ion-icon name="ios-search" class=" text-gray-400 h-12 bg-white px-3 text-lg text-gray-500"></ion-icon>
                 <input type="text" class="w-80 h-12 bg-white border-none pr-0" placeholder="ابحث عن القسم">
                 <select class="w-28 h-12 border-none  bg-gray-100" dir="ltr">
                     <option value="1">الادارة</option>
@@ -53,27 +53,27 @@
     <div class="container-sections w-8/12 mx-auto flex mt-10 gap-4 flex-wrap">
         @foreach (App\Models\Section::get() as $section)
 
-        <div class="card flex flex-col w-52 overflow-hidden">
-            <div class="bg-img w-full relative">
-                <img class="w-full up-img-bg-card h-24 object-cover" src="{{ asset('/sections_images/' . $section->image_name) }}" alt="">
-                <div class="up-img-bg-card blue-stckr bg-indigo-600 opacity-20 absolute top-0"></div>
-            </div>
-            <div class="title w-full items-center justify-center flex py-4 ">
-                <ion-icon name="git-merge"></ion-icon>
-                <h1 class="text-lg text-gray-900">{{  $section->name }}</h1>
-            </div>
-            <h1 class="text-md text-gray-500">{{  $section->description }}</h1>
+            <div class="card flex flex-col w-72 overflow-hidden rounded-2xl">
 
-            <div class="button">
-                <button class=" w-full bg-main-grd-button h-10 flex justify-center items-center ">
-                    <h1 class="text-white font-bold">مراسلة</h1>
-                </button>
+                <img class="w-full up-img-bg-card h-24 object-cover"
+                    src="{{ asset('/sections_images/' . $section->image_name) }}" alt="">
+
+                <div class="h-32 flex flex-col p-4 bg-section-card-content">
+                    <h1 class="text-lg text-white font-bold ">{{ $section->name }}</h1>
+
+                    <h1 class="text-md text-white opacity-80 ">{{ $section->description }}</h1>
+                </div>
+                <div class="grt-line w-full"></div>
+                <div class="button">
+                    <button class=" w-full bg-main-dark-button h-14 flex justify-center items-center ">
+                        <h1 class="text-white text-xl font-bold">مراسلة</h1>
+                    </button>
+                </div>
             </div>
-        </div>
-            
+
         @endforeach
-        
-        
+
+
     </div>
 
 

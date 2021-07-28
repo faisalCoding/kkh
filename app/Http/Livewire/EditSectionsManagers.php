@@ -8,7 +8,6 @@ use Livewire\Component;
 use App\Models\SectionManager;
 use Illuminate\Support\Facades\Hash;
 
-use Laravel\Fortify\Rules\Password;
 
 
 
@@ -25,11 +24,15 @@ class EditSectionsManagers extends Component
 
     public $popup = false;
 
+    protected $listeners = [
+        'new_section_manager_created' => '$refresh'
 
-     
-    
+
+    ];
+
+
     public $rules = [
-        'edit_section_manager_password' =>['required', 'string', 'min:8', 'confirmed']
+        'edit_section_manager_password' => ['required', 'string', 'min:8', 'confirmed']
 
     ];
 
@@ -46,11 +49,12 @@ class EditSectionsManagers extends Component
 
     public function render()
     {
-        return view('livewire.edit-sections-managers',
-        [
-            'sectionsManagers' => SectionManager::get()
-        ]
-    );
+        return view(
+            'livewire.edit-sections-managers',
+            [
+                'sectionsManagers' => SectionManager::latest()->get()
+            ]
+        );
     }
 
 
@@ -62,50 +66,46 @@ class EditSectionsManagers extends Component
 
     public function initToUpdate($arr)
     {
-        
+
         $this->edit_section_manager_id = $arr[0];
         $this->edit_section_manager_name = $arr[1];
         $this->edit_section_manager_email = $arr[2];
         $this->edit_section_manager_section = $arr[3];
         $this->popup = true;
-        
-
-        
-
-
     }
 
     public function delete()
     {
-        SectionManager::find($this->edit_section_manager_id )->delete();
+        SectionManager::find($this->edit_section_manager_id)->delete();
         $this->popup = false;
-
     }
 
 
     public function update()
     {
-        SectionManager::find($this->edit_section_manager_id )->update(
+        SectionManager::find($this->edit_section_manager_id)->update(
             [
                 'name'       => $this->edit_section_manager_name,
-                'email'       => $this->edit_section_manager_email,            
+                'email'       => $this->edit_section_manager_email,
             ]
         );
-        Section::where('manager_id', $this->edit_section_manager_id  )->update(
-            [
-                'manager_id'       => 0,
-          
-            ]
-        );
+        if (isset($this->edit_section_manager_id)) {
+            Section::where('manager_id', $this->edit_section_manager_id)->update(
+                [
+                    'manager_id'       => 0,
 
-        Section::find($this->edit_section_manager_section )->update(
+                ]
+            );
+        }
+
+        Section::find($this->edit_section_manager_section)->update(
             [
                 'manager_id'       => $this->edit_section_manager_id,
-          
+
             ]
         );
         if ($this->change_pass) {
-            SectionManager::find($this->edit_section_manager_id )->update(
+            SectionManager::find($this->edit_section_manager_id)->update(
                 [
                     'password'       => Hash::make($this->edit_section_manager_password),
                 ]
@@ -113,6 +113,5 @@ class EditSectionsManagers extends Component
         }
 
         $this->popup = false;
-
     }
 }

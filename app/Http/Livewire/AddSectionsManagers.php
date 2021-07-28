@@ -48,6 +48,8 @@ class AddSectionsManagers extends Component
                 ]
             );
             
+            $this->emit('new_section_manager_created');
+
         
     }
 
