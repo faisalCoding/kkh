@@ -34,13 +34,13 @@ class EditSectionsManagers extends Component
     ];
 
     public  $messages = [
-        'new_section_name.max' => 'يجب الا يزيد الاسم عن 20 حرفا',
-        'new_section_name.required' => 'الاسم مطلوب',
-        'new_scetion_manager.required' => 'يجب تحديد مدير القسم',
-        'new_section_name.min' => 'يجب الا يقل الاسم عن 3 احرف',
-        'file.max' => 'يجب الا يزيد حجم الملف عن 14 ميجا بايت',
-        'file.mimes' => 'يجب ان يكون امتداد الصورة PNG  او  JPG',
-        'new_section_description.max' => 'يجب الا يزيد الوصف عن 50 حرفا',
+        'new_section_name.max' => '__("The name must not be more than 20 characters")',
+        'new_section_name.required' => '__("Name is required")',
+        'new_scetion_manager.required' => '__("The department manager must be selected")',
+        'new_section_name.min' => '__("The name must not be less than 3 characters")',
+        'file.max' => '__("The file size should not be more than 14MB")',
+        'file.mimes' => '__("The image Type must be PNG or JPG")',
+        'new_section_description.max' => '__("Description should not be more than 50 characters")',
     ];
 
 
