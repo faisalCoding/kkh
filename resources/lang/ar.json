@@ -774,5 +774,5 @@
     "The department manager must be selected": "يجب تحديد مدير القسم",
     "The name must not be less than 3 characters": "يجب الا يقل الاسم عن 3 احرف",
     "The file size should not be more than 14MB": "يجب الا يزيد حجم الملف عن 14 ميجا بايت",
-    "The image Type must be PNG or JPG": "يجب ان يكون امتداد الصورة PNG  او  JPG",
+    "The image Type must be PNG or JPG": "يجب ان يكون امتداد الصورة PNG  او  JPG"
 }
