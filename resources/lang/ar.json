@@ -749,5 +749,13 @@
     "Request a report": "طلب تقرير",
     "Inquiry about sick leave": "استعلام عن اجازة مرضية",
     "Review statement": "افادة مراجعة",
-    "Inquire about a report": "استعلام عن تقرير"
+    "Inquire about a report": "استعلام عن تقرير",
+    "The name must not be more than 20 characters":"يجب الا يزيد الاسم عن 20 حرفا",
+    "Description should not be more than 50 characters":"يجب الا يزيد الوصف عن 50 حرف",
+    "The name should not be more than 15 characters":"يجب الا يزيد الاسم عن 15 حرفا",
+    "Name is required":"الاسم مطلوب",
+    "The department manager must be selected":"يجب تحديد مدير القسم",
+    "The name must not be less than 3 characters":"يجب الا يقل الاسم عن 3 احرف",
+    "The file size should not be more than 14MB":"يجب الا يزيد حجم الملف عن 14 ميجا بايت",
+    "The image Type must be PNG or JPG":"يجب ان يكون امتداد الصورة PNG  او  JPG",
 }
