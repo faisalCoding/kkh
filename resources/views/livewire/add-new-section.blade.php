@@ -3,6 +3,13 @@
 
         <h1>اضافة قسم جديد</h1>
         <div class="">
+            <h1 class="text-gray-800 text-xl py-3 ">ترتيب القسم</h1>
+            <input class="bg-gray-100 rounded-md h-14 border-none w-96" type="text" wire:model="new_section_order_by">
+            @error('new_section_order_by')
+                <span class=" text-red-500">{{ $message }}</span>
+            @enderror
+        </div>
+        <div class="">
             <h1 class="text-gray-800 text-xl py-3 ">اسم القسم</h1>
             <input class="bg-gray-100 rounded-md h-14 border-none w-96" type="text" wire:model="new_section_name">
             @error('new_section_name')

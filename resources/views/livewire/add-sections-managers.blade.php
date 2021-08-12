@@ -37,7 +37,7 @@
             <h1 class="text-gray-800 text-xl py-3 ">كلمة المرور</h1>
 
             <input class="bg-gray-100 rounded-md h-14 border-none w-96" type="text"
-                wire:model="c">
+                wire:model="new_section_manager_password">
             @error('new_section_manager_password')
                 <span class=" text-red-500">{{ $message }}</span>
             @enderror

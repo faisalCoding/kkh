@@ -33,5 +33,21 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-5">
+            <div class="bg-white shadow-xl sm:rounded-lg">
+                <div class="w-full bg-gray-400 flex flex-col">
+                   @foreach (App\Models\UserMessage::get() as $message)
+                    <div class="flex">
+                        <h1>{{ $message->message }}</h1>
+                        <h1>{{ $message->user_name }}</h1>
+                        <h1>{{ $message->service_name }}</h1>
+                        <h1>{{ $message->section_name }}</h1>
+                    </div>
+                   @endforeach
+                </div>
+            </div>
+        </div>
     </div>
 </x-app-layout>

@@ -15,6 +15,7 @@ class AddNewSection extends Component
     public $new_section_image_name = 'bg_img.png';
     public $new_section_description = '';
     public $new_scetion_manager = 1;
+    public $new_section_order_by = 0;
     public $file;
 
     public  $rules = [
@@ -49,6 +50,7 @@ class AddNewSection extends Component
                 'name' => $this->new_section_name,
                 'image_name' => $this->new_section_image_name,
                 'description' => $this->new_section_description,
+                'order_by' => $this->new_section_order_by,
                 'manager_id' => $this->new_scetion_manager
             ]);
             $this->emit('new_section_created');

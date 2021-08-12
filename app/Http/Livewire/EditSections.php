@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 
 use App\Models\Section;
+use App\Models\Service;
 
 class EditSections extends Component
 {
@@ -13,6 +14,10 @@ class EditSections extends Component
     public $section_manager_id = '333';
     public $section_description = '444';
     public $section_image_name = '444';
+    public $new_service_name = '';
+    public $section_order_by = 0;
+    public $section_services = [];
+    public $service_val =[];
     public $popup = false;
 
     protected $listeners = [
@@ -55,8 +60,14 @@ class EditSections extends Component
         $this->section_name = $arr[1];
         $this->section_description = $arr[2];
         $this->section_manager_id = $arr[3];
-        $this->section_image_name = $arr[4];
+        $this->section_order_by = $arr[4];
+        $this->section_image_name = $arr[5];
         $this->popup = true;
+
+        $this->section_services = Service::where('section_id',$arr[0])->get();
+    
+        $this->service_val = Service::select('name','order_by','id')->where('section_id',$arr[0])->get()->toArray();
+       // dd($this->section_val);
 
 
     }
@@ -79,6 +90,7 @@ class EditSections extends Component
                 'name'       => $this->section_name,
                 'description'       => $this->section_description,
                 'manager_id'        => $this->section_manager_id,
+                'order_by'        => $this->section_order_by,
                 'image_name'        => $this->section_image_name
             ]
         );
@@ -90,6 +102,42 @@ class EditSections extends Component
     public function updated()
     {
         $this->validate();
+
+    }
+
+    public function deleteService($service_id)
+    {
+        Service::find($service_id)->delete();
+        $this->section_services = Service::where('section_id',$this->section_id)->get();
+        $this->service_val = Service::select('name','order_by','id')->where('section_id',$this->section_id)->get()->toArray();
+
+        
+    }
+    public function updateService($service_id,$key)
+    {
+        Service::find($service_id)->update([
+            'name' => $this->service_val[$key]['name'],
+            'order_by' => $this->service_val[$key]['order_by']
+        ]);
+        $this->section_services = Service::where('section_id',$this->section_id)->get();
+        $this->service_val = Service::select('name','order_by','id')->where('section_id',$this->section_id)->get()->toArray();
+
+        
+    }
+
+    public function addNewService()
+    {
+        
+        Service::create([
+            'name' => $this->new_service_name,
+            'section_id' => $this->section_id
+        ]);
+        $this->section_services = Service::where('section_id',$this->section_id)->get();
+        $this->service_val = Service::select('name','order_by','id')->where('section_id',$this->section_id)->get()->toArray();
+
+        $this->new_service_name='';
+
+        
 
     }
 }

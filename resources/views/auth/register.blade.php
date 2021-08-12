@@ -16,8 +16,8 @@
 
             <div class="mt-4">
                 <h2></h2>
-                <x-jet-label for="{{ config('fortify.username') }}" value="{{ __(config('fortify.username')) }}" />
-                <x-jet-input id="{{ config('fortify.username') }}" class="block mt-1 w-full" type="text" name="{{ config('fortify.username') }}" :value="old('phone')" required />
+                <x-jet-label for="{{ config('fortify.username') }}" value="asdasdasd{{ __(config('fortify.username')) }}" />
+                <x-jet-input id="{{ config('fortify.username') }}" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required />
             </div>
 
             <div class="mt-4">

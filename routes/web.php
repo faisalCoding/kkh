@@ -19,16 +19,6 @@ use Illuminate\Support\Facades\Session;
 
 Route::prefix(LaravelLocalization::setLocale())->middleware([ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ])->group(function (){
 
-    Route::get('/greeting/{locale}', function ($locale) {
- 
-    
-        Session::put('applocale', $locale);
-        
-    
-        return redirect()->back();
-    
-        //
-    })->name('config.change.locale');
     Route::get('/', function () {
         return view('welcome');
     });

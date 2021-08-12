@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSectionsTable extends Migration
+class CreateUserMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateSectionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sections', function (Blueprint $table) {
+        Schema::create('user_messages', function (Blueprint $table) {
             $table->id();
-            $table->string('image_name')->default('');
-            $table->string('name');
-            $table->unsignedInteger('manager_id')->default(0);
-            $table->string('description')->default('bg_img.png');
-            $table->integer('order_by')->default(0);
+            $table->unsignedInteger('user_id')->default(0);
+            $table->unsignedInteger('section_id')->default(0);
+            $table->string('message');
+            $table->string('contant_type');
+            $table->string('service_id');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateSectionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sections');
+        Schema::dropIfExists('user_messages');
     }
 }
