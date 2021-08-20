@@ -20,6 +20,7 @@ class CreateUserMessagesTable extends Migration
             $table->string('message');
             $table->string('contant_type');
             $table->string('service_id');
+            $table->boolean('reply')->default(0);
             $table->timestamps();
         });
     }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use  App\Models\SectionManager;
 use  App\Models\Service;
+use  App\Models\UserMessage;
 
 class Section extends Model
 {
@@ -19,11 +20,16 @@ class Section extends Model
 
     public function SectionManager()
     {
-        return $this->hasOne(SectionManager::class,'id');
+        return $this->belongsTo(SectionManager::class,'id');
     }
     
     public function Service()
     {
         return $this->hasMany(Service::class,'id');
+    }
+
+    public function usersMessages()
+    {
+        return $this->hasMany(UserMessage::class,'id','section_id');
     }
 }

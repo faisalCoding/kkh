@@ -55,6 +55,6 @@ class SectionManager extends Authenticatable
     }
     public function section()
     {
-        return $this->belongsTo(Section::class,'id','manager_id');
+        return $this->hasOne(Section::class,'manager_id','id');
     }
 }

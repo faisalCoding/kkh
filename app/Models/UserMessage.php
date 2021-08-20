@@ -22,7 +22,7 @@ class UserMessage extends Model
      * @var array
      */
     protected $fillable = [
-        'id','user_id','section_id', 'message', 'contant_type', 'service_id'
+        'id','user_id','section_id', 'message', 'contant_type', 'service_id','reply'
     ];
 
     /**

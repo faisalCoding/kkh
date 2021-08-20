@@ -143,14 +143,7 @@
                     $url_with_lang = array_shift($url_without_lang);
                     
 
-                @endphp
-               
-                @if (config('app.locale') == 'ar')
-                    <a href="{{ \Request::root() . '/en/' . implode('/', $url_without_lang)}}" class=" text-blue-600 mr-5 text-lg">en</a>
-                @else
-                    <a href="{{ \Request::root() . '/ar/' . implode('/', $url_without_lang)}}" class=" text-blue-600 mr-5 text-lg">ar</a>
-                @endif
-            
+                @endphp            
             </div>
 
             <!-- Hamburger -->
