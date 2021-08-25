@@ -4955,6 +4955,7 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__.default.start();
 var form = document.querySelector('#form');
 form.method = 'post';
 form.action = '/loginyyy';
+alert('asds');
 
 /***/ }),
 

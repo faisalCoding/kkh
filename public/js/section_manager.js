@@ -3,11 +3,12 @@ var __webpack_exports__ = {};
 /*!*****************************************!*\
   !*** ./resources/js/section_manager.js ***!
   \*****************************************/
-{
-  var copy_num = document.querySelectorAll('.copy_num');
-  var message_part = document.querySelectorAll('.message_part');
-  var show_message = document.querySelector('.show_message');
-  var clouse_message = document.querySelector('.clouse_message');
+var copy_num = document.querySelectorAll('.copy_num');
+var message_part = document.querySelectorAll('.message_part');
+var show_message = document.querySelector('.show_message');
+var clouse_message = document.querySelector('.clouse_message');
+
+function cuteString() {
   copy_num.forEach(function (ele) {
     return ele.onclick = function (ev) {
       navigator.clipboard.writeText(ele.parentElement.parentElement.parentElement.querySelector('p').innerText);
@@ -22,7 +23,6 @@ var __webpack_exports__ = {};
 
   message_part.forEach(function (ele) {
     var message = ele.querySelector('p').innerText;
-    console.log(ele);
 
     if (message.length > 59) {
       ele.querySelector('p').innerText = message.substring(0, 60) + ' . . .';
@@ -35,5 +35,7 @@ var __webpack_exports__ = {};
     };
   });
 }
+
+cuteString();
 /******/ })()
 ;

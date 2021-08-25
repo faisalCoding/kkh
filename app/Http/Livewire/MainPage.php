@@ -22,7 +22,7 @@ class MainPage extends Component
     public $searcheee = 'ابحث قسام';
     public $selector = 'ابحث قسام';
     public $services = [];
-    public $section_id;
+    public $section_id = '13';
 
     //---------------------------------------
     public $login_user_name;

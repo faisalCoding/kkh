@@ -1,23 +1,6 @@
-<div>
-    <div class="show_message hidden w-screen h-screen  z-40 bg-black bg-opacity-80 right-0 top-0">
-        <div class="flex justify-center items-center w-screen h-screen">
-            <div class="clouse_message absolute w-screen h-screen "></div>
-        <div class="flex w-8/12 bg-white shadow-2xl rounded-md h-80 p-5 relative z-50 flex-col">
-<div class=" flex gap-2">
-    <span
-    class=" material-icons text-gray-300 p-1 rounded-md cursor-pointer select-none"
-    style="font-size: 28px">
-    message
-</span>
-<h1 class="h1">نص الرسالة</h1>
-</div>
+<div wire:poll>
 
-            <p class=" w-10/12 mx-auto"></p>
-        </div>
-        </div>
-
-    </div>
-    <div class=" flex flex-col">
+    <div class=" flex flex-col" >
         @foreach ($users_messages as $user_message)
             <div class="flex w-full mb-2">
                 <div class="message_list h-24 flex rounded-md rounded-l-none justify-between   flex-grow">
@@ -93,7 +76,7 @@
                     </div>
 
                 </div>
-                <div
+                <div wire:click="reply({{ $user_message->id }},{{ $user_message->reply }})"
                     class="send_b flex justify-center items-center {{ $user_message->reply ? 'bg-indigo-500' : 'bg-yellow-500' }} text-white rounded-l-md w-28 select-none cursor-pointer {{ $user_message->reply ? 'shadow-indigo-700' : 'shadow-yellow-700' }} ">
                     <p class=" text-xs font-bold ">{{ $user_message->reply ? 'تم الرد' : 'لم يتم الرد' }}</p>
                 </div>
@@ -102,5 +85,49 @@
 
     </div>
 
-    <script src="{{ asset('js/section_manager.js') }}"></script>
+    {{-- <script src="{{ asset('js/section_manager.js') }}"></script> --}}
+    <script>
+        let copy_num = document.querySelectorAll('.copy_num')
+
+        let show_message = document.querySelector('.show_message')
+        let clouse_message = document.querySelector('.clouse_message')
+
+
+        function cuteString() {
+            let message_part = document.querySelectorAll('.message_part')
+            copy_num.forEach(ele => ele.onclick = ev => {
+                navigator.clipboard.writeText(ele.parentElement.parentElement.parentElement.querySelector('p')
+                    .innerText)
+                alert('تم النسخ')
+            })
+            clouse_message.onclick = e => {
+                show_message.classList.add('hidden')
+                show_message.classList.remove('absolute')
+            }
+            message_part.forEach(ele => {
+
+
+                let message = ele.querySelector('p').innerText;
+
+                
+                if (message.length > 59) {
+                    ele.querySelector('p').innerText = message.substring(0, 60) + ' . . .'
+                }
+
+                ele.onclick = ev => {
+                    show_message.classList.remove('hidden')
+                    show_message.classList.add('absolute')
+                    show_message.querySelector('p').innerText = message;
+
+                }
+            })
+        }
+
+        cuteString()
+
+        window.addEventListener('reply', event => {
+            cuteString()
+            
+        })
+    </script>
 </div>

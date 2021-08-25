@@ -1,10 +1,10 @@
-{
-    let copy_num = document.querySelectorAll('.copy_num')
-    let message_part = document.querySelectorAll('.message_part')
-    let show_message = document.querySelector('.show_message')
-    let clouse_message = document.querySelector('.clouse_message')
+let copy_num = document.querySelectorAll('.copy_num')
+let message_part = document.querySelectorAll('.message_part')
+let show_message = document.querySelector('.show_message')
+let clouse_message = document.querySelector('.clouse_message')
 
 
+function cuteString() {
     copy_num.forEach(ele => ele.onclick = ev => {
         navigator.clipboard.writeText(ele.parentElement.parentElement.parentElement.querySelector('p').innerText)
         alert('تم النسخ')
@@ -14,8 +14,11 @@
         show_message.classList.remove('absolute')
     }
     message_part.forEach(ele => {
+
+
         let message = ele.querySelector('p').innerText;
-        console.log(ele)
+
+
         if (message.length > 59) {
             ele.querySelector('p').innerText = message.substring(0, 60) + ' . . .'
         }
@@ -28,3 +31,5 @@
         }
     })
 }
+
+cuteString()

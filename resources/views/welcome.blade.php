@@ -23,6 +23,7 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/mainPage.js') }}" defer></script>
     @livewireStyles
 </head>
 
@@ -35,6 +36,10 @@
     <footer
         class="footer bg-white relative pt-1 border-b-2 text-white border-blue-700 mt-10 w-12/12 md:w-12/12 rounded-md mx-auto flex flex-col pt-10">
         <div class="container mx-auto px-6 flex flex-col">
+            <div class="flex justify-center p-4 w-8/12 mx-auto"><h1 class="sub-h1-white">موقع مستشفى الملك خالد </h1></div>
+            <div class="flex justify-center p-4 w-8/12 mx-auto">
+                <p class="sub-h2-white">يقدم الموقع كل اقاسم المستشفى ليتيح لك مراسلتها بكل سهولة </p>
+            </div>
             
             <div class="flex justify-around items-center flex-col sm:mt-8 sm:flex-col lg:flex-row ">
 
@@ -56,12 +61,12 @@
                         <h1 class='text-sm font-bold'>الدعم الفني</h1>
                     </div>
     
-                    <div class="flex flex-col px-3 h-12 justify-center items-center">
+                    {{-- <div class="flex flex-col px-3 h-12 justify-center items-center">
                         <span class="material-icons text-lg anim-del-600">
                             location_on
                         </span>
                         <h1 class='text-sm font-bold'>موقع المستشفى</h1>
-                    </div>
+                    </div> --}}
     
                 </div>
     
@@ -73,9 +78,9 @@
                     <div class=" font-bold">وسائط التواصل الاجتماعي</div>
                     <div class="  my-3 h-1 w-full bg-opacity-10"></div>
                     <div class="flex justify-around w-full">
-                        <ion-icon name="logo-facebook" class=" text-blue-500" size="large"></ion-icon>
-                        <ion-icon name="logo-twitter" size="large" class=" text-blue-300"></ion-icon>
-                         <ion-icon name="logo-youtube" size="large" class=" text-red-400"></ion-icon>
+                         <ion-icon name="logo-facebook" size="large"></ion-icon>
+                        <ion-icon name="logo-twitter" size="large" class="  "></ion-icon>
+                         <ion-icon name="logo-youtube" size="large" class=" "></ion-icon>
                     </div>
                 </div>
 

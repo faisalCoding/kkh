@@ -50,20 +50,24 @@
             @if (Auth::check())
                 <h1 class="p-2 rounded-md bg-white bg-opacity-5">{{ Auth::user()->name }}</h1>
                 <div class=" flex-grow px-12 ">
-                    <div class="relative flex justify-start w-10">
-                        <span class="material-icons">
+                    <div class="relative flex justify-start w-10" x-data="{ open: false }">
+                        <span class="material-icons" @click="open = true">
                             message
                         </span>
                         <div
-                             class=" w-5 h-5 rounded-full bg-blue-500 text-center flex justify-center items-end text-xs absolute left-0 top-0">
+                            class=" w-5 h-5 rounded-full bg-blue-500 text-center flex justify-center items-end text-xs absolute left-0 top-0">
                             {{ Auth::user()->userMessage()->count() }}</div>
 
-                            <div
-                              class=" w-52 rounded-md shadow-lg  bg-white text-gray-700 text-center flex flex-col justify-center items-end text-xs absolute top-7 right-0 overflow-hidden">
-                            @foreach (Auth::user()->userMessage()->latest()->get() as $userMessage )
-                                <div class=" w-full h-10 border-b-2 border-gray-100 p-2 flex items-center justify-between hover:bg-gray-100 cursor-pointer select-none">
-                                    <h1>{{ mb_substr($userMessage->message,0,30,'UTF-8') }}... </h1>
-                                    <div class="w-2 h-2 rounded-full   bg-{{ $userMessage->reply?"green":"yellow" }}-400"></div>
+                        <div x-show="open" @click.away="open = false"
+                            class=" w-52 rounded-md shadow-lg  bg-white text-gray-700 text-center flex flex-col justify-center items-end text-xs absolute top-7 right-0 overflow-hidden z-50">
+                            @foreach (Auth::user()->userMessage()->latest()->get()
+    as $userMessage)
+                                <div
+                                    class=" w-full h-10 border-b-2 border-gray-100 p-2 flex items-center justify-between hover:bg-gray-100 cursor-pointer select-none">
+                                    <h1>{{ mb_substr($userMessage->message, 0, 30, 'UTF-8') }}... </h1>
+                                    <div
+                                        class="w-2 h-2 rounded-full   bg-{{ $userMessage->reply ? 'green' : 'yellow' }}-400">
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
@@ -81,9 +85,7 @@
 
 
             <div class="flex bg-main-grd w-full  justify-center items-center main-search relative">
-                <span class="material-icons">
-                    search
-                </span>
+
                 <input type="text" class="w-80 h-12 bg-white border-none pr-0" wire:model="searcheee">
                 <select class="w-28 h-12 border-none  bg-gray-100" dir="ltr" wire:model="selector">
                     <option value="1">الادارة</option>
@@ -94,67 +96,78 @@
         </div>
     </header>
     <nav class="flex flex-col items-center w-full nav">
-        <div class="nan-menu">
-            <ul class="flex justify-center w-full pb-12 pt-3 text-gray text-lg">
-                <li class="py-3 px-10 bg-white"><a href="#">تواصل مع الادراة</a></li>
-                <li class="py-3 px-10 bg-white"><a href="#">موقع المستشقى</a></li>
-                <li class="py-3 px-10 bg-white"><a href="#">من نحن</a></li>
-            </ul>
-        </div>
-        <div class="row-section flex justify-center py-4 text-xl text-white">
-            <h1>اقسام المستشفى</h1>
-            @if (Auth::check())
-                <h1>{{ Auth::user()->name }}</h1>
-            @else
-                <h1>no</h1>
-            @endif
+
+        <div class="row-section w-8/12 flex justify-start items-end pr-9 pt-3 text-xl relative text-white">
+            <div class="circle">
+                <div class="point"></div>
+            </div>
+            <h1 class="sub-h1-white mt-4 mb-1">اقسام المستشفى</h1>
         </div>
     </nav>
-    <div class="container-sections w-8/12 mx-auto flex mt-10 gap-4 flex-wrap">
+    <div class="container-sections w-8/12 mx-auto flex mt-10 flex-wrap flex-col">
+
+        <div class="h-52">
+            <div class="lined w-2  bg-gray-100 flex-shrink-0" style="    height: inherit;"></div>
+        </div>
         @foreach ($sections as $section)
 
-            <div class="card flex flex-col w-72 overflow-hidden rounded-2xl "
-                style=" order:{{ $section->order_by }};">
+            <div class="card flex  " style=" order:{{ $section->order_by }};">
 
-                <img class="w-full up-img-bg-card h-24 object-cover"
-                    src="{{ asset('/sections_images/' . $section->image_name) }}" alt="">
+                <div class="lined w-2  bg-gray-100 flex-shrink-0"></div>
 
-                <div class="h-32 flex flex-col p-4 bg-section-card-content">
-                    <h1 class="text-lg text-white font-bold ">{{ $section->name }}</h1>
+                <div class="flex flex-col pr-4 ">
 
-                    <h1 class="text-md text-white opacity-80 ">{{ $section->description }}</h1>
-                </div>
-                <div class="grt-line w-full"></div>
-                <div class="button">
-                    <button wire:click="cardBotton('{{ $section->id }}')"
-                        class=" w-full bg-main-dark-button h-14 flex justify-center items-center ">
-                        <h1 class="text-white text-xl font-bold">مراسلة</h1>
-                    </button>
+                    <div class=" flex flex-col p-4 ">
+                        <h1 class="h1 ">{{ $section->name }}</h1>
+
+                        <h1 class="sub-h1 ">{{ $section->description }}</h1>
+                    </div>
+
+                    {{-- <img class="w-full up-img-bg-card h-24 object-cover"
+                    src="{{ asset('/sections_images/' . $section->image_name) }}" alt=""> --}}
+
+
+                    <div class="button mb-20 mt-7">
+                        <button wire:click="cardBotton('{{ $section->id }}')"
+                            class=" w-full  h-14 flex justify-start items-center ">
+                            <h1 class="text-black underline text-xl font-bold">مراسلة القسم ></h1>
+                        </button>
+                    </div>
                 </div>
             </div>
 
         @endforeach
 
+        <script>
 
-
-
-
-
-
-
-
-
+        </script>
 
 
 
 
 
         <div
-            class="popup fixed w-screen h-screen {{ $popup ? 'flex' : 'hidden' }} top-0 left-0  min-full-screen-height items-end">
-            <div class="popup_clouse fixed w-screen h-screen  top-0 left-0 z-0" onclick="@this.popup_false()"></div>
+            class="popup fixed w-screen h-screen bg-white {{ $popup ? 'flex' : 'hidden' }} top-0 left-0  min-full-screen-height items-start z-50">
 
-            <div class="w-11/12 flex flex-col mx-auto items-center bg-white rounded-t-2xl z-10 goup ">
+
+            <div
+                class="w-full flex flex-col mx-auto items-center h-screen sm:w-11/12 lg:w-6/12 rounded-t-2xl z-10 goup overflow-auto">
+
+                <div class=" flex w-11/12 justify-between">
+
+                    <h1 class="py-7 text-gray-900 text-2xl">
+                        مراسلة :
+                        @if (App\Models\Section::find($section_id))
+                            {{ App\Models\Section::find($section_id)->name }}
+                        @endif
+                    </h1>
+                    <div class="popup_clouse w-14 h-14 top-0 left-0 z-20 select-none cursor-pointer"
+                        onclick="@this.popup_false()"> <span class="material-icons text-4xl success-popup anim-del-600">
+                            close
+                        </span></div>
+                </div>
                 <div class="flex justify-between w-11/12">
+
                     <div class="flex flex-col w-6/12">
                         <h1 class="py-3 text-lg text-gray-700 ">رقم الجوال</h1>
 
@@ -162,10 +175,10 @@
                             <h1>{{ Auth::user()->phone }}</h1>
 
                         @else
-                            <input wire:model="new_user_phone" class="bg-gray-100 rounded-md h-14 border-none w-11/12"
-                                type="text" name="" id="">
+                            <input wire:model.lazy="new_user_phone"
+                                class="bg-gray-100 rounded-md h-14 border-none w-11/12" type="text" name="" id="">
                             @error('new_user_phone')
-                                <span>{{ $message }}</span>
+                                <span class=" text-red-600">{{ $message }}</span>
                             @enderror
 
                         @endif
@@ -176,10 +189,10 @@
                             <h1>{{ Auth::user()->name }}</h1>
 
                         @else
-                            <input wire:model="new_user_name" class="bg-gray-100 rounded-md h-14 border-none w-11/12"
-                                type="text" name="" id="">
+                            <input wire:model.lazy="new_user_name"
+                                class="bg-gray-100 rounded-md h-14 border-none w-11/12" type="text" name="" id="">
                             @error('new_user_name')
-                                <span>{{ $message }}</span>
+                                <span class=" text-red-600">{{ $message }}</span>
                             @enderror
                         @endif
 
@@ -187,46 +200,57 @@
                     </div>
                     <div class="flex flex-col w-6/12">
                         <h1 class="py-3 text-lg text-gray-700 ">نوع الرسالة</h1>
-                        <select wire:model="service_id" required>
+                        <select wire:model.lazy="service_id" required>
                             <option>حدد نوع الرسالة</option>
                             @foreach ($services as $service)
                                 <option value="{{ $service->id }}">{{ $service->name }}</option>
                             @endforeach
                         </select>
                         @error('service_id')
-                            <span>{{ $message }}</span>
+                            <span class=" text-red-600">{{ $message }}</span>
                         @enderror
 
                         <div class="flex flex-col">
                             <h1 class="py-3 text-lg text-gray-700 ">طريقة الرد</h1>
-                            <div class="flex ">
-                                <input wire:model="new_user_contant_type_message" value="mail" required
-                                    class="bg-gray-100 rounded-md h-14 border-none w-6 mb-2" type="radio"
-                                    name="contant_type" id="">
-                                <span class="material-icons">
-                                    mail
-                                </span>
-                            </div>
-                            <div class="flex">
-                                <input wire:model="new_user_contant_type_message" value="phone" required
-                                    class="bg-gray-100 rounded-md h-14 border-none w-6 mb-2" type="radio"
-                                    name="contant_type" id="">
-                                <span class="material-icons">
-                                    phone
-                                </span>
+                            <div class="flex gap-4 flex-col">
+                                <div class="flex items-center gap-2">
+                                    <input id="email" wire:model.lazy="new_user_contant_type_message" value="mail"
+                                        required class="bg-gray-100 rounded-md h-6  cursor-pointer border-none w-6"
+                                        type="radio" name="contant_type" id="">
+                                    <label class="flex items-center cursor-pointer" for="email">
+                                        <span class="material-icons text-gray-400 mx-2">
+                                            mail
+                                        </span>عبر البريد الاكتروني</label>
+
+
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <input id="phone" wire:model.lazy="new_user_contant_type_message" value="phone"
+                                        required class="bg-gray-100 rounded-md h-6  cursor-pointer border-none w-6"
+                                        type="radio" name="contant_type" id=""><label
+                                        class="flex items-center cursor-pointer" for="phone"> <span
+                                            class="material-icons text-gray-400 mx-2">
+                                            phone
+                                        </span>عبر الواتس اب</label>
+
+
+                                </div>
                             </div>
                             @error('new_user_contant_type_message')
-                                <span>{{ $message }}</span>
+                                <span class=" text-red-600">{{ $message }}</span>
                             @enderror
                         </div>
                     </div>
                 </div>
-                <div class="flex justify-center items-end w-10/12 mt-10">
-                    <textarea wire:model="new_user_message" class=" rounded-t-2xl w-full" cols="30"
-                        rows="10"></textarea>
+                <div class="flex flex-col w-10/12">
                     @error('new_user_message')
-                        <span>{{ $message }}</span>
+                        <span class=" text-red-600">{{ $message }}</span>
                     @enderror
+                    <div class="flex justify-center items-end  mt-10">
+                        <textarea wire:model.lazy="new_user_message" class=" rounded-t-2xl w-full" cols="30"
+                            rows="10"></textarea>
+
+                    </div>
                 </div>
                 <button
                     class="flex justify-center items-center rounded-b-2xl w-10/12 text-white text-lg py-4 mb-7  bg-gray-900"

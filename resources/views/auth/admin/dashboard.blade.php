@@ -37,16 +37,26 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-5">
             <div class="bg-white shadow-xl sm:rounded-lg">
-                <div class="w-full bg-gray-400 flex flex-col">
-                   @foreach (App\Models\UserMessage::get() as $message)
-                    <div class="flex">
-                        <h1>{{ $message->message }}</h1>
-                        <h1>{{ $message->user_name }}</h1>
-                        <h1>{{ $message->service_name }}</h1>
-                        <h1>{{ $message->section_name }}</h1>
+
+
+                <div class="show_message hidden w-screen h-screen  z-40 bg-black bg-opacity-80 right-0 top-0">
+                    <div class="flex justify-center items-center w-screen h-screen">
+                        <div class="clouse_message absolute w-screen h-screen "></div>
+                        <div class="flex w-8/12 bg-white shadow-2xl rounded-md h-80 p-5 relative z-50 flex-col">
+                            <div class=" flex gap-2">
+                                <span class=" material-icons text-gray-300 p-1 rounded-md cursor-pointer select-none"
+                                    style="font-size: 28px">
+                                    message
+                                </span>
+                                <h1 class="h1">نص الرسالة</h1>
+                            </div>
+            
+                            <p class=" w-10/12 mx-auto"></p>
+                        </div>
                     </div>
-                   @endforeach
+            
                 </div>
+               @livewire('admin-message-list')
             </div>
         </div>
     </div>
