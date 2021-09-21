@@ -10,7 +10,12 @@ class AdminMessageList extends Component
 {
     public function render()
     {
-        return view('livewire.admin-message-list');
+
+        $user_messages = UserMessage::filter([])->get();
+
+        return view('livewire.admin-message-list',[
+            'user_messages' => $user_messages
+        ]);
     }
 
     public function reply($id,$case)
@@ -22,5 +27,10 @@ class AdminMessageList extends Component
         $this->dispatchBrowserEvent('reply', ['reply' => !$case]);
 
         
+    }
+
+    public function download($path)
+    {
+        return response()->download(storage_path('app/user_upload/'.$path));
     }
 }

@@ -6,6 +6,7 @@ use Livewire\Component;
 
 use App\Models\Section;
 use App\Models\Service;
+use Illuminate\Support\Facades\Storage;
 
 class EditSections extends Component
 {
@@ -73,7 +74,11 @@ class EditSections extends Component
     }
     public function delete()
     {
-        Section::find($this->section_id )->delete();
+        
+        $section = Section::find($this->section_id);
+        
+        Storage::delete('sections_images\\' . $section->image_name);
+        $section->delete();
         $this->popup = false;
 
     }

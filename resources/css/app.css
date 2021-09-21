@@ -2,6 +2,12 @@
         @import 'tailwindcss/base';
         @import 'tailwindcss/components';
         @import 'tailwindcss/utilities';
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@900&display=swap');
+
+
+        body{
+            font-family: 'Cairo', sans-serif !important;
+        }
         .text-blue-600 {
             color: rgb(65, 147, 241) !important;
         }
@@ -264,7 +270,7 @@
             width: 4px;
             background-color: #eee;
             right: 50%;
-            z-index: 999;
+            z-index: 8;
             bottom: 12px;
             transform: translate(50%, 100%);
         }
@@ -276,3 +282,17 @@
             width: 4px;
             transition: 2s ease-in-out;
         }
+
+        progress[value]::-webkit-progress-value {
+            background-image:
+                 -webkit-linear-gradient(-45deg, 
+                                         transparent 33%, rgba(0, 0, 0, .1) 33%, 
+                                         rgba(0,0, 0, .1) 66%, transparent 66%),
+                 -webkit-linear-gradient(top, 
+                                         rgba(255, 255, 255, .25), 
+                                         rgba(0, 0, 0, .25)),
+                 -webkit-linear-gradient(left, rgb(51, 121, 145), rgb(26, 114, 107));
+          
+              border-radius: 2px; 
+              background-size: 35px 20px, 100% 100%, 100% 100%;
+          }

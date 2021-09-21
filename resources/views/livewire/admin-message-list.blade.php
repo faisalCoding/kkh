@@ -1,6 +1,9 @@
 <div>
     <div class="w-full bg-white p-4 flex flex-col">
-        @foreach (App\Models\UserMessage::get() as $user_message)
+        <div class="">
+
+        </div>
+        @foreach ($user_messages as $user_message)
         <div class="flex w-full mb-2">
          <div class="message_list h-24 flex rounded-md rounded-l-none justify-between   flex-grow">
 
@@ -13,6 +16,15 @@
                  class="message_part flex justify-center items-center  p-3 w-80 text-center mx-5 my-2 text-gray-500 select-none cursor-pointer hover:text-blue-500">
                  <p class=" text-right text-sm ">{{ $user_message->message }}</p>
              </div>
+             @if (!is_null($user_message->file_name))
+             <div class=" flex justify-center items-center w-16 bg-gray-50 rounded-lg">
+                <span wire:click="download('{{$user_message->file_name}}')"
+                class=" material-icons text-gray-300 text-lg p-1 rounded-md cursor-pointer select-none hover:text-indigo-500"
+                style="font-size: 28px">
+                file_download
+            </span>
+             </div>
+             @endif
 
              <div class="flex flex-col gap-1 justify-around py-2 mx-5">
                  <div class="flex rounded-md  p-1 items-center justify-between ">
