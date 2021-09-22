@@ -1,7 +1,22 @@
 <div>
     <div class="w-full bg-white p-4 flex flex-col">
-        <div class="">
-
+        <div class="flex justify-between px-2 py-1 ">
+            <div class="">
+               عدد الرسائل:  {{count($user_messages)}}  
+            </div>
+            <div class="">
+                <select wire:model="filter_section">
+                    <option value="0">الكل</option>
+                    @foreach ($sections as $section)
+                    <option value="{{$section->id}}">{{$section->name}}</option>
+                    @endforeach
+                </select>
+                <button wire:click="filter_reply(true)" class="m-1 py-2 px-5 rounded-lg bg-gray-900 text-white text-xs">
+                    تم الرد
+                </button>
+                <button wire:click="filter_reply(false)" class="m-1 py-2 px-5 rounded-lg bg-gray-900 text-white text-xs">لم يتم الرد
+                </button>
+            </div>
         </div>
         @foreach ($user_messages as $user_message)
         <div class="flex w-full mb-2">
