@@ -300,7 +300,7 @@ class MainPage extends Component
     public function confirmePassword()
     {
 
-        if ($this->password == $this->password_confirmation) {
+        if ($this->password == $this->password_confirmation && strlen($this->password_confirmation) != 0) {
             $this->confirmation = true;
         } else {
             $this->confirmation = false;

@@ -28,7 +28,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <span class="text-indigo-500" ></span>
+    <span class="text-indigo-500 bg-blue-900" ></span>
     <x-jet-banner />
 
 

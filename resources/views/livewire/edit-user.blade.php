@@ -1,7 +1,7 @@
-<div class="flex flex-col gap-2  w-10/12 mx-auto">
+<div class="flex flex-col gap-2  w-11/12 mx-auto">
 
     <h1 class=" text-gray-800 text-xl font-bold py-3 my-6 px-4 bg-gray-100 rounded-md">المستفيدين المسجلين</h1>
-    <div class="">
+    <div class="flex flex-col ">
 
         @foreach ($users as $user)
 
@@ -10,20 +10,22 @@
                 $withOut = str_replace(["\"", "'", "'", '`'], ' ', $usersArray);
                 
             @endphp
-            <div class="flex gap-3 user-items ">
-                <h1 class=" bg-gray-100 text-gray-800 text-xl flex justify-center items-center mb-3 text-center  w-1/4">
+            <div class="flex gap-3 user-items div_table items-center">
+                <h1 class="  text-gray-800 text-md flex justify-center items-center mb-3 text-center  w-1/4">
                     {{ $user->name }}
                 </h1>
-                <p class=" bg-gray-100 text-gray-800 text-xl flex justify-center items-center mb-3 text-center w-1/4">
+                <p class="  text-gray-800 text-md flex justify-center items-center mb-3 text-center w-1/4">
                     {{ $user->email }}</p>
-                <h1 class=" bg-gray-100 text-gray-800 text-xl flex justify-center items-center mb-3 text-center w-1/4">
+                <h1 class="  text-gray-800 text-md flex justify-center items-center mb-3 text-center w-1/4">
                     {{ $user->phone }}</h1>
-                <h1 class=" bg-gray-100 text-gray-800 text-xl flex justify-center items-center mb-3 text-center w-1/4">
+                <h1 class="  text-gray-800 text-md flex justify-center items-center mb-3 text-center w-1/4">
                     {{ $user->id }}
                 </h1>
 
                 <button class="w-6 h-14 flex justify-center items-center text-blue-600 "
-                    onclick="@this.initToUpdate(['{{ $withOut['id'] }}','{{ $withOut['name'] }}',`{{ $withOut['email'] }}`,'{{ $withOut['phone'] }}'])">تعديل</button>
+                    onclick="@this.initToUpdate(['{{ $withOut['id'] }}','{{ $withOut['name'] }}',`{{ $withOut['email'] }}`,'{{ $withOut['phone'] }}'])"><span class="material-icons">
+                        edit
+                    </span></button>
 
             </div>
         @endforeach

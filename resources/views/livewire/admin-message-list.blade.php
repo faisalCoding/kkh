@@ -1,9 +1,8 @@
 <div>
-    <div class="w-full bg-white p-4 flex flex-col">
+    <div class=" hidden bg-blue-600 bg-gray-800"></div>
+    <div class="w-full bg-white p-4 flex flex-col ">
         <div class="flex justify-between px-2 py-1 ">
-            <div class="">
-               عدد الرسائل:  {{count($user_messages)}}  
-            </div>
+
             <div class="">
                 <select wire:model="filter_section">
                     <option value="0">الكل</option>
@@ -11,16 +10,38 @@
                     <option value="{{$section->id}}">{{$section->name}}</option>
                     @endforeach
                 </select>
-                <button wire:click="filter_reply(true)" class="m-1 py-2 px-5 rounded-lg bg-gray-900 text-white text-xs">
+                <button wire:click="filter_reply(true)" class="m-1 py-2 px-5 rounded-lg text-white text-xs
+                @if(array_key_exists('reply',$filter))
+                    @if($filter['reply'])
+                    bg-blue-600
+                    @else
+                    bg-gray-800
+                    @endif
+                @else 
+                bg-gray-800
+                @endif
+                ">
                     تم الرد
                 </button>
-                <button wire:click="filter_reply(false)" class="m-1 py-2 px-5 rounded-lg bg-gray-900 text-white text-xs">لم يتم الرد
+                <button wire:click="filter_reply(false)" class="m-1 py-2 px-5 rounded-lg bg-gray-900 text-white text-xs
+                @if(array_key_exists('reply',$filter))
+                    @if(!$filter['reply'])
+                    bg-blue-600
+                    @else
+                    bg-gray-800
+                    @endif
+                @else 
+                bg-gray-800
+                @endif">لم يتم الرد
                 </button>
             </div>
+            <div class="">
+                عدد الرسائل:  {{count($user_messages)}}  
+             </div>
         </div>
         @foreach ($user_messages as $user_message)
-        <div class="flex w-full mb-2">
-         <div class="message_list h-24 flex rounded-md rounded-l-none justify-between   flex-grow">
+        <div class="flex w-full mb-2 list_message">
+         <div class="message_list h-24 flex justify-between   flex-grow">
 
              <div class="flex flex-col justify-between items-start p-2 py-3">
                  <h1>{{ $user_message->user_name }}</h1>
@@ -34,7 +55,7 @@
              @if (!is_null($user_message->file_name))
              <div class=" flex justify-center items-center w-16 bg-gray-50 rounded-lg">
                 <span wire:click="download('{{$user_message->file_name}}')"
-                class=" material-icons text-gray-300 text-lg p-1 rounded-md cursor-pointer select-none hover:text-indigo-500"
+                class=" material-icons text-gray-300 text-lg p-1 rounded-md cursor-pointer select-none hover:text-indigo-900"
                 style="font-size: 28px">
                 file_download
             </span>
@@ -44,7 +65,7 @@
              <div class="flex flex-col gap-1 justify-around py-2 mx-5">
                  <div class="flex rounded-md  p-1 items-center justify-between ">
                      <div
-                         class="material-icons {{ $user_message->contant_type == 'phone' ? 'text-indigo-500' : 'text-gray-300' }} md-24 select-none">
+                         class="material-icons {{ $user_message->contant_type == 'phone' ? 'text-indigo-900' : 'text-gray-300' }} md-24 select-none">
                          phone_iphone
                      </div>
                      <p class=" text-gray-500 text-xs">
@@ -54,7 +75,7 @@
                          <div class="flex justify-center items-center rounded-md bg-white">
                              <a href="https://wa.me/966{{ (int) $user_message->user_phone }}" target="_blank">
                                  <span
-                                     class="material-icons text-gray-300 text-sm p-1 rounded-md cursor-pointer select-none hover:text-indigo-500"
+                                     class="material-icons text-gray-300 text-sm p-1 rounded-md cursor-pointer select-none hover:text-indigo-900"
                                      style="font-size: 15px ">
                                      send
                                  </span>
@@ -62,7 +83,7 @@
                          </div>
                          <div class="flex justify-center items-center rounded-md bg-white">
                              <span
-                                 class="copy_num material-icons text-gray-300 text-lg p-1 rounded-md cursor-pointer select-none hover:text-indigo-500"
+                                 class="copy_num material-icons text-gray-300 text-lg p-1 rounded-md cursor-pointer select-none hover:text-indigo-900"
                                  style="font-size: 15px">
                                  file_copy
                              </span>
@@ -72,7 +93,7 @@
 
                  <div class="flex rounded-md  p-1 items-center justify-between  w-64">
                      <div
-                         class="material-icons {{ $user_message->contant_type != 'phone' ? 'text-indigo-500' : 'text-gray-300' }} text-md select-none">
+                         class="material-icons {{ $user_message->contant_type != 'phone' ? 'text-indigo-900' : 'text-gray-300' }} text-md select-none">
                          mail
                      </div>
                      <p class=" text-gray-500 text-xs">
@@ -83,7 +104,7 @@
                          <div class="flex justify-center items-center rounded-md bg-white">
                              <a href="mailto:{{ $user_message->user_email }}">
                                  <span
-                                     class="material-icons text-gray-300 text-sm p-1 rounded-md cursor-pointer select-none hover:text-indigo-500"
+                                     class="material-icons text-gray-300 text-sm p-1 rounded-md cursor-pointer select-none hover:text-indigo-900"
                                      style="font-size: 15px">
                                      send
                                  </span>
@@ -91,7 +112,7 @@
                          </div>
                          <div class="flex justify-center items-center rounded-md bg-white">
                              <span
-                                 class="copy_num material-icons text-gray-300 p-1 rounded-md cursor-pointer select-none hover:text-indigo-500"
+                                 class="copy_num material-icons text-gray-300 p-1 rounded-md cursor-pointer select-none hover:text-indigo-900"
                                  style="font-size: 15px">
                                  file_copy
                              </span>
@@ -103,8 +124,9 @@
 
          </div>
          <div wire:click="reply({{ $user_message->id }},{{ $user_message->reply }})"
-             class="send_b flex justify-center items-center {{ $user_message->reply ? 'bg-indigo-500' : 'bg-yellow-500' }} text-white rounded-l-md w-28 select-none cursor-pointer {{ $user_message->reply ? 'shadow-indigo-700' : 'shadow-yellow-700' }} ">
+             class="send_b flex relative justify-center items-center text-black rounded-l-md w-28 select-none cursor-pointer ">
              <p class=" text-xs font-bold ">{{ $user_message->reply ? 'تم الرد' : 'لم يتم الرد' }}</p>
+             <div class=" absolute left-0 w-2 h-full  {{ $user_message->reply ? 'bg-indigo-900' : 'bg-yellow-300' }}"></div>
          </div>
      </div>
         @endforeach

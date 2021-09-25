@@ -85,8 +85,8 @@
 
             <div class="flex bg-main-grd w-full  justify-center items-center main-search relative">
 
-                <input type="text" class="w-80 h-12 bg-white border-none pr-0" wire:model="searcheee">
-                <select class="w-28 h-12 border-none  bg-gray-100" dir="ltr" wire:model="selector">
+                <input type="text" class="w-80 h-12 bg-white border-none pr-0" wire:model.lazy="searcheee">
+                <select class="w-28 h-12 border-none  bg-gray-100" dir="ltr" wire:model.lazy="selector">
                     <option value="1">الادارة</option>
                     <option value="12">ابو محمد </option>
                     <option value="13">خوخ</option>
@@ -175,7 +175,7 @@
                         <h1>{{ Auth::user()->phone }}</h1>
 
                         @else
-                        <input wire:model.lazy="new_user_phone" class="bg-gray-100 rounded-md h-14 border-none w-11/12"
+                        <input wire:model.lazy.lazy="new_user_phone" class="bg-gray-100 rounded-md h-14 border-none w-11/12"
                             type="text" name="" id="">
                         @error('new_user_phone')
                         <span class=" text-red-600">{{ $message }}</span>
@@ -189,7 +189,7 @@
                         <h1>{{ Auth::user()->name }}</h1>
 
                         @else
-                        <input wire:model.lazy="new_user_name" class="bg-gray-100 rounded-md h-14 border-none w-11/12"
+                        <input wire:model.lazy.lazy="new_user_name" class="bg-gray-100 rounded-md h-14 border-none w-11/12"
                             type="text" name="" id="">
                         @error('new_user_name')
                         <span class=" text-red-600">{{ $message }}</span>
@@ -200,7 +200,7 @@
                     </div>
                     <div class="flex flex-col w-6/12">
                         <h1 class="py-3 text-lg text-gray-700 pb-6">نوع الرسالة</h1>
-                        <select wire:model.lazy="service_id" required>
+                        <select wire:model.lazy.lazy="service_id" required>
                             <option>حدد نوع الرسالة</option>
                             @foreach ($services as $service)
                             <option value="{{ $service->id }}">{{ $service->name }}</option>
@@ -214,7 +214,7 @@
                             <h1 class="py-3 text-lg text-gray-700 pb-6">طريقة الرد</h1>
                             <div class="flex gap-4 flex-col">
                                 <div class="flex items-center gap-2">
-                                    <input id="email" wire:model.lazy="new_user_contant_type_message" value="mail"
+                                    <input id="email" wire:model.lazy.lazy="new_user_contant_type_message" value="mail"
                                         required class="bg-gray-100 rounded-md h-6  cursor-pointer border-none w-6"
                                         type="radio" name="contant_type" id="">
                                     <label class="flex items-center cursor-pointer" for="email">
@@ -225,7 +225,7 @@
 
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <input id="phone" wire:model.lazy="new_user_contant_type_message" value="phone"
+                                    <input id="phone" wire:model.lazy.lazy="new_user_contant_type_message" value="phone"
                                         required class="bg-gray-100 rounded-md h-6  cursor-pointer border-none w-6"
                                         type="radio" name="contant_type" id=""><label
                                         class="flex items-center cursor-pointer" for="phone"> <span
@@ -250,7 +250,7 @@
                         x-on:livewire-upload-error="isUploading = false"
                         x-on:livewire-upload-progress="progress = $event.detail.progress">
 
-                        <input type="file" wire:model="file" id="uploudfile">
+                        <input type="file" wire:model.lazy="file" id="uploudfile">
 
                         <!-- Progress Bar -->
                         <div x-show="isUploading">
@@ -270,7 +270,7 @@
                     <span class=" text-red-600 text-sm">{{ $message }}</span>
                     @enderror
                     <div class="flex justify-center items-end  mt-10">
-                        <textarea wire:model.lazy="new_user_message" class=" rounded-t-2xl w-full" cols="30"
+                        <textarea wire:model.lazy.lazy="new_user_message" class=" rounded-t-2xl w-full" cols="30"
                             rows="10"></textarea>
 
                     </div>
@@ -326,7 +326,7 @@
                                 <x-jet-label for="password" class="py-3 text-lg text-gray-700 "
                                     value="{{ __('Password') }}" />
                                 <x-jet-input id="password" class="block mt-1 w-full" type="password"
-                                    wire:model="password" required autocomplete="current-password" />
+                                    wire:model.lazy="password" required autocomplete="current-password" />
                                 @error('password')
                                 {{ $message }}
                                 @enderror
@@ -371,7 +371,7 @@
         <div class="popup_clouse fixed w-screen h-screen  top-0 left-0 z-0" onclick="@this.popupToCreate_false()">
         </div>
 
-        <div class="w-5/12 flex flex-col mx-auto items-center bg-white rounded-xl z-10 goup overflow-hidden">
+        <div class="w-full sm:w-full md:w-7/12  lg:w-5/12 flex flex-col mx-auto items-center bg-white rounded-xl z-10 goup overflow-hidden">
             <div class="flex justify-center w-11/12">
                 <div class="flex flex-col w-6/12">
 
@@ -381,7 +381,7 @@
 
                         <div class="mt-4">
                             <x-jet-label for="name" class="py-3 text-lg text-gray-700 " value="{{ __('Name') }}" />
-                            <input id="name" wire:model="new_user_name" type="text" />
+                            <input id="name" wire:model.lazy="new_user_name" type="text" />
                             @error('new_user_name')
                             <span class=" text-sm text-red-700 block"> {{ $message }} </span>
                             @enderror
@@ -391,7 +391,7 @@
 
                         <div class="mt-4">
                             <x-jet-label for="phone" class="py-3 text-lg text-gray-700 " value="{{ __('phone') }}" />
-                            <input id="phone" wire:model="new_user_phone" type="text" />
+                            <input id="phone" wire:model.lazy="new_user_phone" type="text" />
                             @error('new_user_phone')
                             <span class=" text-sm text-red-700 block"> {{ $message }} </span>
                             @enderror
@@ -401,7 +401,7 @@
                         <div class="mt-4">
                             <x-jet-label for="password" class="py-3 text-lg text-gray-700 "
                                 value="{{ __('Password') }}" />
-                            <x-jet-input id="password" class="block mt-1 w-full" type="password" wire:model="password"
+                            <x-jet-input id="password" class="block mt-1 w-full" type="password" wire:model.lazy="password"
                                 required />
 
                             @error('password')
@@ -413,7 +413,7 @@
                             <x-jet-label for="password_confirmation" class="py-3 text-lg text-gray-700 "
                                 value="اعد كتابة كلمة المرور" />
                             <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                                wire:model="password_confirmation" required autocomplete="current-password" />
+                                wire:model.lazy="password_confirmation" required autocomplete="current-password" />
                             <span
                                 class="text-sm py-1 px-3 {{ $confirmation ? 'bg-green-300' : 'bg-gray-300' }}">{{ $confirmation ? 'كلمة المرور متطابقة' : 'يجب ان تتطابق كلمة المرور' }}</span>
 

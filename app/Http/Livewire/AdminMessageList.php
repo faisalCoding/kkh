@@ -46,7 +46,7 @@ class AdminMessageList extends Component
     }
 
     public function filter_reply($filter_value){
-        if (array_key_exists('reply',$this->filter)) {
+        if (array_key_exists('reply',$this->filter) && $filter_value == $this->filter['reply']) {
             unset($this->filter['reply']);
         }else{
             $this->filter['reply'] = $filter_value;

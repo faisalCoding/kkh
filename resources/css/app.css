@@ -3,11 +3,10 @@
         @import 'tailwindcss/components';
         @import 'tailwindcss/utilities';
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@900&display=swap');
-
-
-        body{
+        body {
             font-family: 'Cairo', sans-serif !important;
         }
+        
         .text-blue-600 {
             color: rgb(65, 147, 241) !important;
         }
@@ -161,10 +160,7 @@
         .message_list {
             position: relative;
             z-index: 2;
-            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.06);
             background-color: white;
-            border: #eee 2px solid;
-            border-left: none;
         }
         
         .send_b {
@@ -282,17 +278,22 @@
             width: 4px;
             transition: 2s ease-in-out;
         }
-
+        
         progress[value]::-webkit-progress-value {
-            background-image:
-                 -webkit-linear-gradient(-45deg, 
-                                         transparent 33%, rgba(0, 0, 0, .1) 33%, 
-                                         rgba(0,0, 0, .1) 66%, transparent 66%),
-                 -webkit-linear-gradient(top, 
-                                         rgba(255, 255, 255, .25), 
-                                         rgba(0, 0, 0, .25)),
-                 -webkit-linear-gradient(left, rgb(51, 121, 145), rgb(26, 114, 107));
-          
-              border-radius: 2px; 
-              background-size: 35px 20px, 100% 100%, 100% 100%;
-          }
+            background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left, rgb(51, 121, 145), rgb(26, 114, 107));
+            border-radius: 2px;
+            background-size: 35px 20px, 100% 100%, 100% 100%;
+        }
+        
+        .div_table:not(:nth-child(2n+1)) {
+            background-color: #e4e4e4;
+            border-radius: 10px;
+        }
+        
+        .list_message:not(:nth-child(2n+1)) {
+            outline: 2px dotted rgb(235, 235, 235);
+        }
+        
+        .list_message:hover {
+            outline: 2px dotted rgb(45, 114, 111);
+        }
